@@ -31,12 +31,13 @@ bot.on('text', async(msg) => {
 });
 
 bot.on('inlineQuery', msg => {
+    const id = uuidv4();
     let query = msg.query;
     const answers = bot.answerList(msg.id, {
         cacheTime: 1000
     });
     answers.addVoice({
-        id: 'maxim',
+        id: 'maxim' + id,
         type: 'voice',
         voice_url: 'http://alexpenkin.world/?text=' + encodeURIComponent(query),
         title: 'Максим',
@@ -44,7 +45,7 @@ bot.on('inlineQuery', msg => {
         caption: query
     });
     answers.addVoice({
-        id: 'tatyana',
+        id: 'tatyana' + id,
         voice_url: 'http://alexpenkin.world/?text=' + encodeURIComponent(query) + '&voice_id=Tatyana',
         title: 'Татьяна',
         description: `Женский голос`,
